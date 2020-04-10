@@ -1,17 +1,10 @@
 <?php
 
-    require_once("./classes/retangulo.php");
-    
     if(isset($_POST) && $_POST){
-      $base = $_POST["base"];
-      $altura = $_POST["altura"];
-      
-      $retangulo = new Retangulo();
+        $base = $_POST["base"];
+        $altura = $_POST["altura"];
 
-      $retangulo->baseProp = $base;
-      $retangulo->alturaProp = $altura;
-
-      $resultado = $retangulo->calculaArea();
+        $resultado = ($base * $altura);
     }
 
 ?>
@@ -24,8 +17,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
-  <div class="container">
-    <h1>Calculando área do retângulo</h1>
     <form class="" action="" method="post">
       <div class="form-row">
         <div class="form-group col-md-12">
@@ -57,6 +48,5 @@
         <?php endif; ?>
     <?php endif; ?>
     </form>
-  </div>
   </body>
 </html>

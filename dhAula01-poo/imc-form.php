@@ -1,21 +1,21 @@
 <?php
 
-    require_once("./classes/retangulo.php");
-    
+    require_once("./classes/imc.php");
+
     if(isset($_POST) && $_POST){
-      $base = $_POST["base"];
-      $altura = $_POST["altura"];
-      
-      $retangulo = new Retangulo();
+        $peso = $_POST["peso"];
+        $altura = $_POST["altura"];
 
-      $retangulo->baseProp = $base;
-      $retangulo->alturaProp = $altura;
+        $imc = new IndiceMassaCorporal();
 
-      $resultado = $retangulo->calculaArea();
+        $imc->pesoProp = $peso;
+        $imc->alturaProp = $altura;
+
+        $massaCorporal = $imc->calculaMassaCorporal();
+        $situacaoPeso = $imc->situacaoPeso();
     }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -24,14 +24,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
-  <div class="container">
-    <h1>Calculando área do retângulo</h1>
     <form class="" action="" method="post">
-      <div class="form-row">
+    <div class="form-row">
         <div class="form-group col-md-12">
           <div class="col-md-4">
-            <label for="base">Base</label>
-            <input type="text" class="form-control" name="base" id="base">
+            <label for="peso">Peso</label>
+            <input type="text" class="form-control" name="peso" id="peso">
           </div>
         </div>
         <div class="form-group col-md-12">
@@ -48,15 +46,14 @@
       </div>
     </form>
     <?php if(isset($_POST) && $_POST):
-        if($resultado): ?>
-          <div class="col-md-12">
-            <div class="col-md-2 alert alert-success">
-              <p><?= "A área do retângulo é: " . $resultado ?></p>
+        if($massaCorporal && $situacaoPeso): ?>
+            <div class="col-md-12">
+                <div class="col-md-2 alert alert-success">
+                    <p><?= "O seu índice de massa corporal é: " . number_format($massaCorporal, 2) ?></p>
+                    <p><?= "A situação do seu peso é: " . $situacaoPeso ?></p>
+                </div>
             </div>
-          </div>
         <?php endif; ?>
     <?php endif; ?>
-    </form>
-  </div>
   </body>
 </html>

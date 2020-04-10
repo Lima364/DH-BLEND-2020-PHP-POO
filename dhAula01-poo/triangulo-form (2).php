@@ -1,17 +1,17 @@
 <?php
 
-    require_once("./classes/retangulo.php");
-    
+    require_once("./classes/triangulo.php");
+
     if(isset($_POST) && $_POST){
-      $base = $_POST["base"];
-      $altura = $_POST["altura"];
-      
-      $retangulo = new Retangulo();
+        $base = $_POST["base"];
+        $altura = $_POST["altura"];
 
-      $retangulo->baseProp = $base;
-      $retangulo->alturaProp = $altura;
+        $triangulo = new Triangulo();
 
-      $resultado = $retangulo->calculaArea();
+        $triangulo->baseProp = $base;
+        $triangulo->alturaProp = $altura;
+
+        $resultado = $triangulo->calculaArea();
     }
 
 ?>
@@ -25,7 +25,7 @@
   </head>
   <body>
   <div class="container">
-    <h1>Calculando área do retângulo</h1>
+    <h1>Calculando área do triângulo</h1>
     <form class="" action="" method="post">
       <div class="form-row">
         <div class="form-group col-md-12">
@@ -51,7 +51,7 @@
         if($resultado): ?>
           <div class="col-md-12">
             <div class="col-md-2 alert alert-success">
-              <p><?= "A área do retângulo é: " . $resultado ?></p>
+              <p><?= "A área do triângulo é: " . $resultado ?></p>
             </div>
           </div>
         <?php endif; ?>
